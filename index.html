@@ -1,35 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Privacy Policy - Neon Bonus Slot</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Neon Bonus Slot</title>
+  <meta name="description" content="Neon Bonus Slot is a free-to-play slot-style game for entertainment only. No real-money gambling, no in-app purchases." />
 
-  <!-- Open Graph (optional) -->
-  <meta property="og:title" content="Privacy Policy - Neon Bonus Slot">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rebbrabb.github.io/privacy.html/">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Neon Bonus Slot" />
+  <meta property="og:description" content="Free-to-play slot-style game for entertainment only. No real-money gambling. No in-app purchases." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://rebbrabb.github.io/neon-bonus-slot/og.png" />
+
+  <!-- Fav / icon (IMPORTANT: file must be named exactly icon.png in repo root) -->
+  <link rel="icon" href="icon.png" />
 
   <style>
     :root{
-      --bg0:#05060b;
-      --bg1:#070a14;
-      --ink:#eaf0ff;
-      --muted:rgba(234,240,255,.72);
-      --muted2:rgba(234,240,255,.58);
+      --ink:#0b1020;
+      --muted:rgba(11,16,32,.72);
+      --muted2:rgba(11,16,32,.55);
+      --card:rgba(255,255,255,.72);
+      --stroke:rgba(20,60,160,.14);
+      --shadow: 0 18px 60px rgba(10,30,80,.14);
+      --radius: 22px;
 
-      --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.03);
-      --stroke:rgba(255,255,255,.14);
+      --blue1:#1b64ff;
+      --blue2:#2bb3ff;
+      --blue3:#6bd8ff;
 
-      --lime:#b6ff2a;
-      --cyan:#48d7ff;
-      --violet:#8a5bff;
-      --pink:#ff4fd8;
+      --accent1:#ff4fd8;
+      --accent2:#8b5cff;
 
-      --shadow: 0 26px 90px rgba(0,0,0,.60);
-      --radius: 18px;
+      --max:1100px;
     }
 
     *{box-sizing:border-box}
@@ -38,228 +41,659 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--ink);
-      background:
-        radial-gradient(1200px 700px at 18% -10%, rgba(182,255,42,.18), transparent 60%),
-        radial-gradient(1000px 700px at 86% 10%, rgba(72,215,255,.14), transparent 62%),
-        radial-gradient(900px 700px at 60% 110%, rgba(138,91,255,.14), transparent 62%),
-        radial-gradient(900px 520px at 5% 70%, rgba(255,79,216,.10), transparent 65%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
       overflow-x:hidden;
+      background:#ffffff;
     }
 
-    /* subtle grid + glow overlay */
-    body:before{
-      content:"";
+    /* White background with blue lines (non-spammy, clean) */
+    .bg{
       position:fixed;
       inset:0;
-      pointer-events:none;
+      z-index:-3;
       background:
-        radial-gradient(700px 420px at 50% 0%, rgba(255,255,255,.08), transparent 60%),
-        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
-      background-size: auto, 44px 44px, 44px 44px;
-      opacity:.25;
-      mix-blend-mode: overlay;
+        radial-gradient(900px 600px at 10% 10%, rgba(43,179,255,.18), transparent 60%),
+        radial-gradient(900px 600px at 90% 20%, rgba(27,100,255,.12), transparent 60%),
+        radial-gradient(900px 600px at 50% 100%, rgba(107,216,255,.16), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, #fbfdff 55%, #f6fbff 100%);
+    }
+    .bg:before{
+      content:"";
+      position:absolute;
+      inset:-30%;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(27,100,255,.10) 0px,
+          rgba(27,100,255,.10) 1px,
+          transparent 1px,
+          transparent 18px
+        );
+      transform:rotate(-8deg);
+      opacity:.42;
+      filter: blur(.2px);
+      pointer-events:none;
+    }
+    .bg:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(1000px 700px at 50% -10%, rgba(255,79,216,.10), transparent 60%);
+      pointer-events:none;
     }
 
-    a{color:rgba(234,240,255,.92);text-decoration:none}
-    a:hover{text-decoration:underline}
+    /* Big decorative watermelon that rotates on scroll */
+    .wm-hero{
+      position:fixed;
+      right:-140px;
+      top:18%;
+      width:min(520px, 62vw);
+      aspect-ratio:1/1;
+      z-index:-2;
+      pointer-events:none;
+      opacity:.85;
+      transform: translateZ(0) rotate(var(--wm-rot, 0deg));
+      transition: transform .08s linear;
+      filter: drop-shadow(0 28px 40px rgba(10,30,80,.10));
+    }
 
-    .wrap{max-width:980px;margin:0 auto;padding:46px 18px 70px;position:relative}
+    /* "Watermelon" built with CSS (no extra assets needed) */
+    .wm-hero .disc{
+      width:100%;
+      height:100%;
+      border-radius:999px;
+      position:relative;
+      background:
+        radial-gradient(120px 120px at 30% 28%, rgba(255,255,255,.75), transparent 55%),
+        radial-gradient(340px 320px at 72% 72%, rgba(0,0,0,.06), transparent 55%),
+        linear-gradient(135deg, #1ecb64, #0fa24b);
+      border: 10px solid rgba(11,16,32,.08);
+      overflow:hidden;
+    }
+    .wm-hero .disc:before{
+      content:"";
+      position:absolute; inset:14%;
+      border-radius:999px;
+      background:
+        radial-gradient(900px 700px at 18% 20%, rgba(255,255,255,.40), transparent 60%),
+        linear-gradient(135deg, #ff2d4d, #ff3b73 60%, #ff2d4d);
+      box-shadow: inset 0 0 0 10px rgba(255,245,210,.85);
+      transform: rotate(-6deg);
+    }
+    .wm-hero .seeds{
+      position:absolute; inset:0;
+      border-radius:999px;
+      transform: rotate(10deg);
+      opacity:.9;
+    }
+    .wm-hero .seed{
+      position:absolute;
+      width:18px; height:26px;
+      border-radius:999px;
+      background: #1a0f20;
+      opacity:.85;
+      transform: rotate(12deg);
+      box-shadow: 0 10px 18px rgba(0,0,0,.08);
+    }
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:40px 18px 90px;}
+
+    /* Topbar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 16px;
+      border-radius:999px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 14px 40px rgba(10,30,80,.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .brand{display:flex;align-items:center;gap:12px;min-width:220px}
+    .brand img{
+      width:44px;height:44px;border-radius:14px;
+      display:block;
+      box-shadow: 0 14px 30px rgba(10,30,80,.12);
+      border:1px solid rgba(20,60,160,.12);
+      background:#fff;
+    }
+    .brand .t1{margin:0;font-size:16px;letter-spacing:.2px}
+    .brand .t2{margin:0;font-size:12px;color:var(--muted2)}
+
+    .nav{
+      display:flex; flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-end;
+    }
+    .nav a{
+      font-size:13px;
+      color:rgba(11,16,32,.78);
+      text-decoration:none;
+      padding:9px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.65);
+      border:1px solid rgba(20,60,160,.10);
+      transition: transform .16s ease, background .16s ease, border-color .16s ease;
+    }
+    .nav a:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.82);
+      border-color: rgba(20,60,160,.18);
+    }
+
+    /* Main card */
     .card{
-      background: linear-gradient(180deg, var(--card), var(--card2));
-      border:1px solid var(--stroke);
-      border-radius:var(--radius);
-      padding:26px 22px;
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      margin-top:18px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 22px;
+      align-items:center;
+    }
+
+    .headline{
+      margin:0 0 10px;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.65;
+      max-width:60ch;
+    }
+
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0}
+    .badge{
+      font-size:13px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.72);
+      border:1px solid rgba(20,60,160,.12);
+      color:rgba(11,16,32,.78);
+    }
+
+    .ctaRow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:11px 14px;border-radius:14px;
+      background: rgba(255,255,255,.76);
+      border:1px solid rgba(20,60,160,.14);
+      color:rgba(11,16,32,.86);
+      font-weight:700;font-size:14px;
+      box-shadow: 0 12px 26px rgba(10,30,80,.10);
+      transition: transform .18s ease, filter .18s ease, border-color .18s ease;
+      user-select:none;
+      text-decoration:none;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(20,60,160,.22)}
+    .btnPrimary{
+      background:
+        radial-gradient(18px 18px at 25% 25%, rgba(255,255,255,.70), transparent 60%),
+        linear-gradient(135deg, rgba(43,179,255,.92), rgba(255,255,255,.90), rgba(27,100,255,.90));
+      color:#071022;
+      border-color: rgba(20,60,160,.18);
+    }
+
+    .divider{height:1px;background:rgba(20,60,160,.10);margin:22px 0}
+
+    .sectionTitle{margin:0 0 12px;font-size:18px;letter-spacing:.2px}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+    }
+    .mini{
+      padding:14px;border-radius:18px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(20,60,160,.12);
+      min-height:96px;
+      box-shadow: 0 10px 26px rgba(10,30,80,.06);
+    }
+    .mini h3{margin:0 0 8px;font-size:14px}
+    .mini p{margin:0;color:var(--muted2);font-size:13px;line-height:1.5}
+
+    /* Phone mockup (LANDSCAPE) */
+    .phoneWrap{display:flex;justify-content:center;align-items:center;padding:10px 0}
+    .phone{
+      width:520px;
+      max-width: 100%;
+      aspect-ratio: 19.5 / 9;
+      border-radius: 34px;
+      background:
+        radial-gradient(520px 320px at 20% 30%, rgba(43,179,255,.18), transparent 60%),
+        radial-gradient(520px 320px at 80% 70%, rgba(27,100,255,.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72));
+      border: 1px solid rgba(20,60,160,.12);
+      box-shadow: 0 22px 70px rgba(10,30,80,.12);
       position:relative;
       overflow:hidden;
     }
-    .card:before{
+    /* Softer / not spammy: no thick frame */
+    .phone:before{
       content:"";
-      position:absolute;inset:-40%;
+      position:absolute;
+      inset:10px;
+      border-radius: 26px;
       background:
-        radial-gradient(520px 320px at 30% 30%, rgba(182,255,42,.18), transparent 60%),
-        radial-gradient(520px 320px at 70% 45%, rgba(72,215,255,.14), transparent 60%),
-        radial-gradient(520px 320px at 55% 80%, rgba(138,91,255,.14), transparent 60%);
-      transform: rotate(8deg);
-      opacity:.85;
-      pointer-events:none;
-    }
-    .content{position:relative}
-
-    .top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-    h1{
-      margin:0 0 8px;
-      font-size:34px;
-      letter-spacing:.2px;
-    }
-    .updated{
-      margin:0;
-      color:var(--muted2);
-      font-size:13px;
+        radial-gradient(520px 360px at 20% 0%, rgba(255,79,216,.10), transparent 60%),
+        radial-gradient(520px 360px at 90% 70%, rgba(139,92,255,.12), transparent 60%),
+        linear-gradient(180deg, rgba(11,16,32,.86), rgba(11,16,32,.94));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
     }
 
-    .badges{
+    .screen{
+      position:absolute;
+      inset:10px;
+      border-radius: 26px;
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:0;
+    }
+
+    .pane{
+      position:relative;
+      z-index:1;
+      padding:18px 18px;
       display:flex;
-      flex-wrap:wrap;
+      flex-direction:column;
+      justify-content:center;
       gap:10px;
-      margin-top:12px;
-    }
-    .badge{
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
-      color:rgba(234,240,255,.88);
-      font-size:13px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      white-space:nowrap;
-    }
-    .badgeStrong{
-      border-color: rgba(182,255,42,.35);
-      background:
-        radial-gradient(18px 18px at 25% 25%, rgba(255,255,255,.20), transparent 60%),
-        linear-gradient(135deg, rgba(182,255,42,.22), rgba(72,215,255,.14));
       color:rgba(255,255,255,.92);
     }
+    .pane small{color:rgba(255,255,255,.70)}
 
-    .hr{height:1px;background:rgba(255,255,255,.12);margin:18px 0 16px}
-
-    .intro{
-      margin:0 0 18px;
-      color:rgba(234,240,255,.84);
-      line-height:1.7;
-      max-width:88ch;
-    }
-
-    h2{
-      margin:26px 0 10px;
-      font-size:18px;
+    .inTitle{
+      font-size:16px;
+      font-weight:800;
       letter-spacing:.2px;
+      margin:0;
     }
-    p,li{
-      color:rgba(234,240,255,.80);
-      line-height:1.7;
-      font-size:14.5px;
+    .inSub{
+      margin:0;
+      color:rgba(255,255,255,.70);
+      font-size:12px;
+      line-height:1.45;
     }
-    ul{margin:10px 0 0 18px}
-    li{margin:8px 0}
 
-    .note{
-      margin-top:18px;
-      padding:14px 14px;
-      border-radius:14px;
-      background:rgba(255,255,255,.06);
+    .wmCard{
+      align-self:center;
+      justify-self:center;
+      width: 220px;
+      max-width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 26px;
+      background: rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.12);
-      color:rgba(234,240,255,.78);
+      display:grid;
+      place-items:center;
+      box-shadow: 0 16px 50px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Watermelon inside phone (CSS, no asset) */
+    .wmMini{
+      width: 160px;
+      aspect-ratio:1/1;
+      border-radius:999px;
+      background:
+        radial-gradient(80px 80px at 30% 30%, rgba(255,255,255,.35), transparent 60%),
+        linear-gradient(135deg, #1fe06c, #0ea34b);
+      position:relative;
+      box-shadow: inset 0 0 0 8px rgba(255,255,255,.12);
+    }
+    .wmMini:before{
+      content:"";
+      position:absolute; inset:18%;
+      border-radius:999px;
+      background:
+        linear-gradient(135deg, #ff2d4d, #ff3b73 60%, #ff2d4d);
+      box-shadow: inset 0 0 0 8px rgba(255,245,210,.75);
+      transform: rotate(-8deg);
+    }
+    .wmMini .seed{
+      position:absolute;
+      width:10px;height:16px;border-radius:999px;
+      background:#1a0f20;
+      opacity:.85;
+    }
+
+    .kpiRow{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:6px;
+    }
+    .kpi{
+      padding:10px 12px;
+      border-radius:16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      min-width: 140px;
+    }
+    .kpi b{display:block; font-size:12px; color:rgba(255,255,255,.86)}
+    .kpi span{display:block; font-size:12px; color:rgba(255,255,255,.68); margin-top:4px}
+
+    /* Scroll reveal */
+    .fadeUp{
+      opacity:0;
+      transform: translateY(16px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fadeUp.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* A subtle parallax line layer that moves on scroll */
+    .parallaxLines{
+      position:fixed;
+      inset:-10%;
+      z-index:-2;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(43,179,255,.10) 0px,
+          rgba(43,179,255,.10) 1px,
+          transparent 1px,
+          transparent 26px
+        );
+      opacity:.20;
+      transform: translateY(var(--lines-y, 0px));
+      pointer-events:none;
+      mix-blend-mode: multiply;
     }
 
     .footer{
       margin-top:18px;
+      color:rgba(11,16,32,.62);
+      font-size:12px;
       display:flex;
       flex-wrap:wrap;
+      gap:10px;
       align-items:center;
       justify-content:space-between;
-      gap:10px;
-      color:rgba(234,240,255,.60);
-      font-size:12px;
     }
+    .footer a{color:rgba(11,16,32,.78); text-decoration:none}
+    .footer a:hover{text-decoration:underline}
 
-    @media (max-width:680px){
-      h1{font-size:28px}
-      .card{padding:22px 18px}
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .headline{font-size:38px}
+      .phone{width:100%}
+      .grid{grid-template-columns:1fr}
+      .wm-hero{right:-220px; top:10%; opacity:.60}
     }
   </style>
 </head>
 
 <body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="parallaxLines" aria-hidden="true"></div>
+
+  <!-- Decorative rotating watermelon -->
+  <div class="wm-hero" aria-hidden="true">
+    <div class="disc">
+      <div class="seeds">
+        <span class="seed" style="left:53%; top:34%"></span>
+        <span class="seed" style="left:62%; top:42%"></span>
+        <span class="seed" style="left:56%; top:52%"></span>
+        <span class="seed" style="left:70%; top:55%"></span>
+        <span class="seed" style="left:62%; top:64%"></span>
+      </div>
+    </div>
+  </div>
+
   <div class="wrap">
-    <div class="card">
-      <div class="content">
-        <div class="top">
-          <div>
-            <h1>Privacy Policy</h1>
-            <p class="updated">Last updated: 2026-01-22</p>
-            <div class="badges">
-              <span class="badge">Free-to-play</span>
-              <span class="badge">No real-money gambling</span>
-              <span class="badge">No in-app purchases</span>
-              <span class="badge">No tracking</span>
-              <span class="badge badgeStrong">18+ only</span>
-            </div>
+    <!-- TOPBAR -->
+    <div class="topbar fadeUp">
+      <div class="brand">
+        <!-- FIX: this is the app icon on the left -->
+        <img src="icon.png" alt="App icon" />
+        <div>
+          <p class="t1"><b>Neon Bonus Slot</b></p>
+          <p class="t2">Marketing page</p>
+        </div>
+      </div>
+
+      <div class="nav">
+        <a href="#screens">Screens</a>
+        <a href="#features">Features</a>
+        <a href="#responsible">Responsible</a>
+        <a href="#privacy">Privacy</a>
+      </div>
+    </div>
+
+    <!-- MAIN CARD -->
+    <div class="card fadeUp">
+      <div class="hero">
+        <div>
+          <h1 class="headline">Neon-style fruit slot</h1>
+          <p class="sub">
+            <b>Free-to-play</b> slot-style game for entertainment only.
+            <b>No real-money gambling</b>. <b>No in-app purchases</b>. <b>18+ only</b>.
+          </p>
+
+          <!-- CTA: ONLY Privacy (no Contact Support button) -->
+          <div class="ctaRow">
+            <a class="btn btnPrimary" href="#privacy">Privacy Policy</a>
+            <a class="btn" href="#screens">View screenshots</a>
+          </div>
+
+          <div class="badges" style="margin-top:14px">
+            <span class="badge">Free to play</span>
+            <span class="badge">No real money</span>
+            <span class="badge">No in-app purchases</span>
+            <span class="badge">18+ only</span>
           </div>
         </div>
 
-        <div class="hr"></div>
+        <!-- LANDSCAPE PHONE -->
+        <div class="phoneWrap">
+          <div class="phone" aria-label="Landscape phone mockup">
+            <div class="screen">
+              <div class="pane" style="padding-right:10px">
+                <p class="inTitle">Neon Bonus Slot</p>
+                <p class="inSub">Fruit reels • quick sessions • bright win effects</p>
 
-        <p class="intro">
-          This Privacy Policy applies to the mobile game <b>Neon Bonus Slot</b> (“the App”). The App is a free entertainment game and
-          does not involve real-money gambling.
+                <div class="kpiRow">
+                  <div class="kpi">
+                    <b>Gameplay</b>
+                    <span>Single-screen slot</span>
+                  </div>
+                  <div class="kpi">
+                    <b>Coins</b>
+                    <span>Virtual only</span>
+                  </div>
+                  <div class="kpi">
+                    <b>Age</b>
+                    <span>18+ only</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pane" style="padding-left:10px; align-items:center">
+                <div class="wmCard" aria-label="Watermelon preview">
+                  <div class="wmMini">
+                    <span class="seed" style="left:58%; top:35%"></span>
+                    <span class="seed" style="left:68%; top:44%"></span>
+                    <span class="seed" style="left:60%; top:55%"></span>
+                    <span class="seed" style="left:72%; top:58%"></span>
+                  </div>
+                </div>
+                <small>Preview content (illustration)</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- SCREENS -->
+      <h2 id="screens" class="sectionTitle fadeUp">Screens</h2>
+      <div class="grid fadeUp">
+        <div class="mini">
+          <h3>Gameplay screenshot 1</h3>
+          <p><code>screen1.jpg</code></p>
+        </div>
+        <div class="mini">
+          <h3>Gameplay screenshot 2</h3>
+          <p><code>screen2.jpg</code></p>
+        </div>
+        <div class="mini">
+          <h3>Gameplay screenshot 3</h3>
+          <p><code>screen3.jpg</code></p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- FEATURES -->
+      <h2 id="features" class="sectionTitle fadeUp">Free features</h2>
+      <div class="grid fadeUp">
+        <div class="mini">
+          <h3>Fruit reels & neon style</h3>
+          <p>Bright symbols, clean contrast, and quick readability.</p>
+        </div>
+        <div class="mini">
+          <h3>Win animations</h3>
+          <p>Big win screens, spark effects, and smooth transitions.</p>
+        </div>
+        <div class="mini">
+          <h3>Simple single-slot flow</h3>
+          <p>One main screen, no complex menus, quick sessions.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- RESPONSIBLE -->
+      <h2 id="responsible" class="sectionTitle fadeUp">Responsible play and disclosures</h2>
+      <div class="grid fadeUp">
+        <div class="mini">
+          <h3>18+ only</h3>
+          <p>This game is intended for users aged <b>18 and older</b>.</p>
+        </div>
+        <div class="mini">
+          <h3>No real-money gambling</h3>
+          <p>Outcomes are virtual and for entertainment purposes only. No cash-out.</p>
+        </div>
+        <div class="mini">
+          <h3>No purchases</h3>
+          <p>No subscriptions, no top-ups, no paid advantages.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- PRIVACY -->
+      <h2 id="privacy" class="sectionTitle fadeUp">Privacy Policy</h2>
+      <p class="fadeUp" style="margin:0;color:rgba(11,16,32,.72);line-height:1.7">
+        This Privacy Policy applies to the mobile game <b>Neon Bonus Slot</b> (“the App”). The App is a
+        <b>free-to-play</b> entertainment game intended for users <b>18+</b> and does not involve real-money gambling.
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="fadeUp">
+        <h3 style="margin:0 0 10px;font-size:15px">1. Information We Collect</h3>
+        <p style="margin:0;color:rgba(11,16,32,.72);line-height:1.7">
+          We do not collect, store, or process personal information such as your name, address, phone number,
+          payment details, or precise location.
         </p>
 
-        <h2>1. Age Requirement (18+)</h2>
-        <p>
-          The App is intended for users aged <b>18 years or older</b>. We do not knowingly collect personal information from anyone under 18.
-          If you believe a minor has provided information to us, please contact us and we will take appropriate steps.
+        <h3 style="margin:18px 0 10px;font-size:15px">2. Local Device Data</h3>
+        <p style="margin:0;color:rgba(11,16,32,.72);line-height:1.7">
+          The App may save game settings or progress locally on your device. This data remains on your device
+          and is not transmitted to us.
         </p>
 
-        <h2>2. Information We Collect</h2>
-        <p>
-          We do not collect, store, or process personal information such as your name, address, payment details, or precise location.
-        </p>
-
-        <h2>3. Local Device Data</h2>
-        <p>
-          The App may save settings or gameplay progress locally on your device (for example, sound settings or progress). This data stays
-          on your device and is not transmitted to us.
-        </p>
-
-        <h2>4. Third-Party Services</h2>
-        <p>
+        <h3 style="margin:18px 0 10px;font-size:15px">3. Third-Party Services</h3>
+        <p style="margin:0;color:rgba(11,16,32,.72);line-height:1.7">
           The App does not use third-party analytics, advertising SDKs, or tracking services that collect personal data.
         </p>
 
-        <h2>5. In-App Purchases</h2>
-        <p>
+        <h3 style="margin:18px 0 10px;font-size:15px">4. In-App Purchases</h3>
+        <p style="margin:0;color:rgba(11,16,32,.72);line-height:1.7">
           The App contains <b>no in-app purchases</b>, no subscriptions, and no paid content.
         </p>
 
-        <h2>6. Real-Money Gambling</h2>
-        <p>
-          The App does not offer real-money gambling. Any virtual currency used in the App has no real-world value and cannot be redeemed
-          for money or items of value.
+        <h3 style="margin:18px 0 10px;font-size:15px">5. Real-Money Gambling</h3>
+        <p style="margin:0;color:rgba(11,16,32,.72);line-height:1.7">
+          The App does not offer real-money gambling. Any virtual currency or points in the App have no real-world value
+          and cannot be redeemed for money or items of value.
         </p>
 
-        <h2>7. Contact</h2>
-        <p>
-          If you have any questions about this Privacy Policy, contact us at:
+        <h3 style="margin:18px 0 10px;font-size:15px">6. Children’s Privacy</h3>
+        <p style="margin:0;color:rgba(11,16,32,.72);line-height:1.7">
+          The App is intended for users aged <b>18 and older</b>. We do not knowingly collect data from children.
+        </p>
+
+        <h3 style="margin:18px 0 10px;font-size:15px">7. Contact</h3>
+        <p style="margin:0;color:rgba(11,16,32,.72);line-height:1.7">
+          If you have questions about this Privacy Policy, contact:
           <a href="mailto:assistente@lidermaterialdeconstrucaoltda.info">assistente@lidermaterialdeconstrucaoltda.info</a>
         </p>
+      </div>
 
-        <div class="note">
-          <b>Summary:</b> Free-to-play, 18+ only, no real-money gambling, no in-app purchases, no tracking, and no personal data collection.
-        </div>
+      <div class="divider"></div>
 
-        <div class="footer">
-          <span>© <span id="y"></span> Neon Bonus Slot</span>
-          <span>Privacy Policy</span>
-        </div>
+      <div class="footer">
+        <span>© <span id="y"></span> Neon Bonus Slot</span>
+        <span>
+          <a href="privacy.html">Privacy (direct link)</a>
+          &nbsp;•&nbsp;
+          <a href="mailto:assistente@lidermaterialdeconstrucaoltda.info">Email</a>
+        </span>
       </div>
     </div>
   </div>
 
   <script>
+    // year
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // reveal on scroll
+    const els = document.querySelectorAll(".fadeUp");
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add("show");
+      });
+    }, {threshold: 0.12});
+    els.forEach(el=>io.observe(el));
+
+    // scroll effects: rotate watermelon + parallax lines
+    const wm = document.querySelector(".wm-hero");
+    const root = document.documentElement;
+
+    function onScroll(){
+      const y = window.scrollY || 0;
+
+      // rotate decorative watermelon
+      const deg = (y * 0.18) % 360;
+      root.style.setProperty("--wm-rot", deg + "deg");
+
+      // parallax line layer
+      root.style.setProperty("--lines-y", (y * 0.08) + "px");
+    }
+    window.addEventListener("scroll", onScroll, {passive:true});
+    onScroll();
   </script>
 </body>
 </html>
